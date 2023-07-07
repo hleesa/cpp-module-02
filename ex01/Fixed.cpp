@@ -28,7 +28,7 @@ Fixed::Fixed(const Fixed& other) {
 Fixed& Fixed::operator=(const Fixed& other) {
 	printString("Copy assignment operator called");
 	if (this != &other)
-		setRawBits(other.value);
+		this->value = other.value;
 	return *this;
 }
 
