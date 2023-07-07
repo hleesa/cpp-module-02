@@ -19,7 +19,7 @@ Fixed::Fixed(const Fixed& other) {
 
 Fixed& Fixed::operator=(const Fixed& other) {
 	if (this != &other)
-		setRawBits(other.value);
+		this->value = other.value;
 	return *this;
 }
 
@@ -52,19 +52,19 @@ bool Fixed::operator!=(const Fixed& other) const {
 
 Fixed Fixed::operator+(const Fixed& other) const {
 	Fixed fixed;
-	fixed.setRawBits(value + other.value);
+	fixed.value = value + other.value;
 	return fixed;
 }
 
 Fixed Fixed::operator-(const Fixed& other) const {
 	Fixed fixed;
-	fixed.setRawBits(value - other.value);
+	fixed.value = value - other.value;
 	return fixed;
 }
 
 Fixed Fixed::operator*(const Fixed& other) const {
 	Fixed fixed;
-	fixed.setRawBits((long long) value * other.value >> fractionalBit);
+	fixed.value = (long long) value * other.value >> fractionalBit;
 	return fixed;
 }
 
@@ -74,7 +74,7 @@ Fixed Fixed::operator/(const Fixed& other) const {
 		exit(EXIT_FAILURE);
 	}
 	Fixed fixed;
-	fixed.setRawBits(((long long) value << fractionalBit) / other.value);
+	fixed.value = ((long long) value << fractionalBit) / other.value;
 	return fixed;
 }
 
@@ -85,7 +85,7 @@ Fixed& Fixed::operator++() {
 
 Fixed Fixed::operator++(int) {
 	Fixed fixed;
-	fixed.setRawBits(value);
+	fixed.value = value;
 	++value;
 	return fixed;
 }
@@ -97,7 +97,7 @@ Fixed& Fixed::operator--() {
 
 Fixed Fixed::operator--(int) {
 	Fixed fixed;
-	fixed.setRawBits(value);
+	fixed.value = value;
 	--value;
 	return fixed;
 }
