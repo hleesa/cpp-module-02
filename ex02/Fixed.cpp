@@ -19,7 +19,7 @@ Fixed::Fixed(const Fixed& other) {
 
 Fixed& Fixed::operator=(const Fixed& other) {
 	if (this != &other)
-		setRawBits(other.getRawBits());
+		this->value = other.value;
 	return *this;
 }
 
@@ -85,7 +85,7 @@ Fixed& Fixed::operator++() {
 
 Fixed Fixed::operator++(int) {
 	Fixed fixed;
-	fixed.setRawBits(value);
+	fixed.value = value;
 	++value;
 	return fixed;
 }
@@ -97,7 +97,7 @@ Fixed& Fixed::operator--() {
 
 Fixed Fixed::operator--(int) {
 	Fixed fixed;
-	fixed.setRawBits(value);
+	fixed.value = value;
 	--value;
 	return fixed;
 }
